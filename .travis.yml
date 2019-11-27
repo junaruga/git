@@ -1,0 +1,27 @@
+language: c
+
+cache:
+  directories:
+    - $HOME/travis-cache
+
+os: linux
+dist: xenial
+
+arch:
+  - amd64
+  - arm64
+  - s390x
+  - ppc64le
+
+compiler:
+  - gcc
+  - clang
+
+matrix:
+  include:
+    - os: osx
+
+script: ci/arm64-segfault-demo.sh
+
+notifications:
+  email: false
