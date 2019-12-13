@@ -20,7 +20,7 @@ compiler:
 matrix:
   include:
     - os: osx
-      before_install:
+      before_install: true
 
 before_install:
   - sudo apt-get -yq install strace
