@@ -20,8 +20,13 @@ compiler:
 matrix:
   include:
     - os: osx
+      before_install:
 
-script: ci/arm64-segfault-demo.sh
+before_install:
+  - sudo apt-get -yq install strace
+  - dpkg -S /usr/include/stdio.h
+  - apt-cache show libc6-dev || true
+script: strace -f ci/arm64-segfault-demo.sh
 
 notifications:
   email: false
